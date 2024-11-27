@@ -22,7 +22,7 @@ class Voltage:
         all_objs = [volt_obj] + list(volt_objs)
         for obj in all_objs:
             if not isinstance(obj, Voltage):
-                raise TypeError('Can only add objects of type "Voltage"')
+                raise TypeError("Can only add objects of type 'Voltage'")
 
         # Check if all currents are equal
         first_current = volt_obj.current
