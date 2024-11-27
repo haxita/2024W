@@ -1,8 +1,10 @@
 import unittest
 
-from ad2_ai.assignment03.example01.skeleton.chaining_hash_node import ChainingHashNode
-from ad2_ai.assignment03.example01.skeleton.chaining_hash_set import ChainingHashSet
+# from ad2_ai.assignment03.example01.skeleton.chaining_hash_node import ChainingHashNode
+# from ad2_ai.assignment03.example01.skeleton.chaining_hash_set import ChainingHashSet
 
+from chaining_hash_node import ChainingHashNode
+from chaining_hash_set import ChainingHashSet
 
 class TestChainingHashSet(unittest.TestCase):
     def insert(self, test_set, key):
