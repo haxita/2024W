@@ -1,0 +1,27 @@
+{
+    "submission_id": 1,
+    "submission_type": "proposal",
+    "team_name": "Data Sculptors",
+    "students": [
+        {
+            "first_name": "Ali",
+            "last_name": "Hojatnia",
+            "workload": 0.25
+        },
+        {
+            "first_name": "Alexander",
+            "last_name": "Aufreiter",
+            "workload": 0.25
+        },
+        {
+            "first_name": "Thomas",
+            "last_name": "Wageneder",
+            "workload": 0.25
+        },
+        {
+            "first_name": "Yisong",
+            "last_name": "Tang",
+            "workload": 0.25
+        }
+    ]
+}
