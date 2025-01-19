@@ -1,44 +1,32 @@
 ;K12338084
 
-(declare-fun Circle   () Int)
-(declare-fun Square   () Int)
-(declare-fun Triangle () Int)
+; Update the following
+; Circle + Circle = 84
+; Square + Circle = 84 + 2 (86)
 
-(assert (= (+ Circle Circle) 84))
+(set-logic QF_BV)
 
-(assert (= (+ (* Circle Square) Square) 84))
+; Declare bit-vectors (assuming 32 bits for Z_2^32)
+(declare-fun Circle () (_ BitVec 32))
+(declare-fun Square () (_ BitVec 32))
+(declare-fun Triangle () (_ BitVec 32))
 
-(assert (= (- (* Circle Square) (* Triangle Circle)) Circle))
+; Constraints
+(assert (= (bvadd Circle Circle) (_ bv84 32)))
+(assert (= (bvadd Square Circle) (_ bv86 32)))
+(assert (= (bvsub (bvmul Circle Circle) (bvmul Triangle Circle)) Circle))
 
+; Check and get solution
 (check-sat)
 (get-model)
 
-;unsat
-
-;keep adding one would not get sat result
-
-;Tweak the second condition, delete the „+ square“ part
-
-(declare-fun Circle   () Int)
-(declare-fun Square   () Int)
-(declare-fun Triangle () Int)
-
-(assert (= (+ Circle Circle) 84))
-
-(assert (= (* Circle Square) 84))
-
-(assert (= (- (* Circle Square) (* Triangle Circle)) Circle))
-
-(check-sat)
-(get-model)
 
 ;sat
 ;(
-;  (define-fun Triangle () Int
-;    1)
-;  (define-fun Circle () Int
-;    42)
-;  (define-fun Square () Int
-;    2)
+;  (define-fun Circle () (_ BitVec 32)
+;    #x8000002a)
+;  (define-fun Triangle () (_ BitVec 32)
+;    #x00000029)
+;  (define-fun Square () (_ BitVec 32)
+;    #x8000002c)
 ;)
-

@@ -1,22 +1,22 @@
-(declare-fun Circle   () Int)
-(declare-fun Square   () Int)
-(declare-fun Triangle () Int)
+(set-logic QF_BV)
 
-(assert (= (+ Circle Circle) 10))
+(declare-fun Circle () (_ BitVec 32))
+(declare-fun Square () (_ BitVec 32))
+(declare-fun Triangle () (_ BitVec 32))
 
-(assert (= (+ (* Circle Square) Square) 12))
-
-(assert (= (- (* Circle Square) (* Triangle Circle)) Circle))
+(assert (= (bvadd Circle Circle) (_ bv10 32)))
+(assert (= (bvadd Square Circle) (_ bv12 32)))
+(assert (= (bvsub (bvmul Circle Circle) (bvmul Triangle Circle)) Circle))
 
 (check-sat)
-(get-model)
+(get-model) 
 
 ;sat
 ;(
-;  (define-fun Triangle () Int
-;    1)
-;  (define-fun Circle () Int
-;    5)
-;  (define-fun Square () Int
-;    2)
+;  (define-fun Circle () (_ BitVec 32)
+;    #x80000005)
+;  (define-fun Triangle () (_ BitVec 32)
+;    #x80000004)
+;  (define-fun Square () (_ BitVec 32)
+;    #x80000007)
 ;)
